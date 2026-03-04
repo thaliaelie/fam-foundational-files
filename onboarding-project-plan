@@ -1,0 +1,81 @@
+# Onboarding Project Plan — <Customer Name>
+
+## Connections
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| AWS (Master Payer) | POV | Simple | Required | Not Started | | |
+| AWS (Resources) | POV | Simple | Required | Not Started | | |
+| Azure | N/A | Simple | Optional | Not Started | | |
+| GCP | N/A | Simple | Optional | Not Started | | |
+| Kubernetes Agent | Onboarding | Complex | Optional | Not Started | | |
+| AnyCost (Databricks) | Adoption | Moderate | Optional | Not Started | | |
+| AnyCost (Datadog) | Adoption | Moderate | Optional | Not Started | | |
+| AnyCost (Snowflake) | Adoption | Moderate | Optional | Not Started | | |
+| Slack Integration | Onboarding | Simple | Recommended | Not Started | | |
+| SSO | Onboarding | Moderate | Recommended | Not Started | | |
+
+## Users & Access
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| Core Team Invited | Onboarding | Simple | Required | Not Started | | |
+| Engineering Stakeholders | Adoption | Simple | Recommended | Not Started | | |
+| Finance Stakeholders | Adoption | Simple | Recommended | Not Started | | |
+| User Groups Configured | Adoption | Simple | Optional | Not Started | | |
+
+## Dimensions & CostFormation
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| Core Dimensions (default) | POV | Simple | Required | Not Started | | Auto-created |
+| Account Name | Onboarding | Complex | Recommended | Not Started | | |
+| Environment | Onboarding | Complex | Recommended | Not Started | | |
+| Team / Business Unit | Onboarding | Complex | Optional | Not Started | | |
+| Application / Service | Adoption | Complex | Optional | Not Started | | |
+| Cost Center | Adoption | Complex | Optional | Not Started | | |
+| Custom Dimension 1 | Adoption | Complex | Optional | Not Started | | |
+| Allocation Dimension | Adoption | Complex | Optional | Not Started | | |
+
+## Views & Anomaly Detection
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| Global View Configured | Onboarding | Simple | Required | Not Started | | |
+| Account-Level Views | Onboarding | Moderate | Recommended | Not Started | | |
+| Service-Level Views | Adoption | Moderate | Optional | Not Started | | |
+| Custom Dimension Views | Adoption | Moderate | Optional | Not Started | | |
+| Anomaly Thresholds Tuned | Adoption | Simple | Recommended | Not Started | | |
+
+## Dashboards & Analytics
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| Standard Dashboard | Onboarding | Simple | Required | Not Started | | |
+| Executive Dashboard | Adoption | Moderate | Recommended | Not Started | | |
+| Engineering Dashboard | Adoption | Moderate | Optional | Not Started | | |
+| Custom Dashboards | Adoption | Complex | Optional | Not Started | | |
+
+## Budgets
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| Overall Budget | Adoption | Simple | Recommended | Not Started | | |
+| Per-Account Budgets | Adoption | Moderate | Optional | Not Started | | |
+| Per-Team Budgets | Adoption | Moderate | Optional | Not Started | | |
+
+## Telemetry Streams
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| Allocation Stream 1 | Adoption | Complex | Optional | Not Started | | |
+| Allocation Stream 2 | Adoption | Complex | Optional | Not Started | | |
+| Unit Metric Stream 1 | Adoption | Complex | Optional | Not Started | | |
+
+## Training
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| Platform Demo (30m) | Onboarding | Simple | Recommended | Not Started | | |
+| Core Team Training | Onboarding | Simple | Required | Not Started | | |
+| End User Training | Adoption | Simple | Recommended | Not Started | | |
+| Advanced Training (CostFormation) | Adoption | Moderate | Optional | Not Started | | |
+
+## Scheduled Check-Ins
+| Step | Phase | Complexity | Required | Status | Target Date | Notes |
+|------|-------|-----------|----------|--------|-------------|-------|
+| Recurring Onboarding Syncs | Onboarding | Simple | Required | Not Started | | Weekly recommended |
+| Recurring Adoption Syncs | Adoption | Simple | Required | Not Started | | Biweekly/monthly |
+| EBR | Onboarding | Simple | Required | Not Started | | Upon onboarding completion |
