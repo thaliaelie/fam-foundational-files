@@ -1,0 +1,150 @@
+# Skill Building Guide
+
+## What is a Skill?
+
+A skill is a reusable, standardized workflow that Claude Code executes when invoked with a slash command (e.g., `/customer-sync-prep`). Skills live in `.claude/skills/<skill-name>/` and consist of:
+
+```
+.claude/skills/<skill-name>/
+├── SKILL.md              # The skill definition (required)
+└── references/           # Supporting reference files (optional)
+    ├── checklist.md
+    └── patterns.md
+```
+
+## SKILL.md Structure
+
+Every skill follows this pattern:
+
+```markdown
+---
+name: <skill-name>
+description: >
+  <2-4 sentence description of what the skill does, when to use it,
+  and what it produces. This is what Claude uses to decide whether
+  to invoke the skill.>
+---
+
+# <Skill Title>
+
+<One-line summary of the skill's purpose.>
+
+## Step 1: <First Action>
+<Detailed instructions for what Claude should do>
+
+## Step 2: <Second Action>
+<Detailed instructions>
+
+...
+
+## Step N: <Final Action>
+<Output format, what to present to the user>
+```
+
+## Design Principles
+
+### 1. Be Specific About Inputs
+Tell Claude exactly what to ask the user for and what to read from files:
+
+```markdown
+## Step 1: Gather Context
+1. Read the customer's `CLAUDE.md` — extract:
+   - Org ID (needed for MCP queries)
+   - Top-level dimension (for cost grouping)
+```
+
+### 2. Include MCP Query Examples
+Show the exact function calls Claude should make:
+
+```markdown
+2. Query cost data:
+   ```
+   get_cost_data(group_by=[top_dimension], cost_type="real_cost",
+                 date_range={start: 30_days_ago, end: today})
+   ```
+```
+
+### 3. Define Output Format
+Show Claude exactly what the output should look like:
+
+```markdown
+## Step 6: Generate Report
+Present the results in this format:
+\```markdown
+## Report Title
+| Column 1 | Column 2 |
+|----------|----------|
+| data     | data     |
+\```
+```
+
+### 4. Handle Edge Cases
+Anticipate what might go wrong:
+
+```markdown
+4. If per-target filtering returns no data, fall back to querying
+   overall costs without the target filter. Note this limitation
+   in the report.
+```
+
+### 5. Offer Post-Workflow Actions
+Skills should update customer context when relevant:
+
+```markdown
+## Step 7: Update Customer Context
+Offer to:
+1. Add today's activity to CLAUDE.md Recent Activity
+2. Update Open Items
+3. Commit changes
+```
+
+## Reference Files
+
+Put supporting content in `references/`:
+- **Checklists**: Step-by-step verification lists
+- **Patterns**: Common patterns and templates
+- **Troubleshooting**: Known issues and solutions
+- **Examples**: Worked examples
+
+Reference files are read by Claude during skill execution. They extend the skill without making the SKILL.md too long.
+
+## Testing a New Skill
+
+1. Navigate to `customers/_example-customer/`
+2. Invoke your skill: `/<skill-name>`
+3. Verify:
+   - Does it ask for the right inputs?
+   - Does it read the right files?
+   - Does it make the right MCP queries?
+   - Does the output format look correct?
+   - Does it offer to update customer context?
+
+4. Test with a real customer folder to verify edge cases
+
+## Adding a New Skill
+
+1. Create the directory:
+   ```bash
+   mkdir -p .claude/skills/<skill-name>/references
+   ```
+
+2. Write `SKILL.md` following the structure above
+
+3. Add reference files if needed
+
+4. Test with the example customer
+
+5. Create a PR:
+   ```bash
+   git checkout -b <initials>/shared/<skill-name>
+   git add .claude/skills/<skill-name>/
+   git commit -m "[shared] Add <skill-name> skill"
+   git push -u origin <initials>/shared/<skill-name>
+   ```
+
+## Existing Skills as Reference
+
+Study these skills for patterns:
+- **`customer-sync-prep`** — Good example of reading context + querying MCP + generating output
+- **`allocation-validation`** — Good example of complex multi-step validation with thresholds
+- **`costformation-builder`** — Good example of creating files and interacting with the user
