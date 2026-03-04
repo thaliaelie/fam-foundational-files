@@ -1,0 +1,108 @@
+# New Customer Setup Guide
+
+## Overview
+
+When a new customer is assigned to you, follow this process to create their workspace in fam-os and prepare for the kickoff engagement.
+
+## Quick Start
+
+The fastest way to set up a new customer is the onboarding skill:
+
+```
+/onboarding-kickoff
+```
+
+This will walk you through creating the folder, populating templates, and querying existing configuration.
+
+## Manual Setup
+
+If you prefer to set things up manually:
+
+### Step 1: Create the customer folder
+
+```bash
+mkdir customers/<customer-name>
+```
+
+Use kebab-case for the folder name (e.g., `acme-corp`, `big-bank`).
+
+### Step 2: Copy templates
+
+```bash
+cp templates/customer-claude-md.md customers/<customer-name>/CLAUDE.md
+cp templates/joint-success-plan.md customers/<customer-name>/joint-success-plan.md
+cp templates/onboarding-project-plan.md customers/<customer-name>/onboarding-project-plan.md
+```
+
+### Step 3: Populate metadata
+
+Open `customers/<customer-name>/CLAUDE.md` and fill in:
+
+- **CloudZero Org ID** — from CloudZero admin or sales handoff
+- **Assigned FAM** — your name
+- **Contract Tier** — Starter, Growth, or Enterprise
+- **Renewal Date** — from CRM
+- **Cloud Providers** — which clouds they use
+- **Key Contacts** — from sales handoff or kickoff call
+
+Set **Phase** to "Kickoff".
+
+### Step 4: Query initial state
+
+If the customer already has a CloudZero org, use Claude to check what's configured:
+
+```
+What dimensions exist for this customer?
+What telemetry streams are configured?
+What's their monthly spend look like?
+```
+
+Use the results to:
+- Pre-populate adoption checkboxes in CLAUDE.md
+- Mark completed items in the OPP
+- Fill in the Key Dimensions table
+
+### Step 5: Download CostFormation (if applicable)
+
+If the customer has existing CostFormation:
+1. Download from the CloudZero UI or API
+2. Save as `customers/<customer-name>/definitions.orgId-<uuid>.cz.yaml`
+3. Document the dimensions in the CLAUDE.md Key Dimensions table
+
+### Step 6: Initial commit
+
+```bash
+git add customers/<customer-name>/
+git commit -m "[<customer-name>] Initial onboarding — customer workspace created"
+```
+
+### Step 7: Validate
+
+```
+/customer-health-check
+```
+
+This gives you a baseline health score and identifies what's already configured.
+
+## After Kickoff
+
+Once you've had the kickoff meeting:
+
+1. **Update CLAUDE.md** — fill in North Star, contacts, engagement details
+2. **Populate JSP** — add goals from the kickoff workshop
+3. **Update OPP** — set target dates based on agreed timeline
+4. **Commit**: `[<customer-name>] Post-kickoff — JSP and OPP populated`
+
+## Checklist
+
+- [ ] Customer folder created (`customers/<name>/`)
+- [ ] CLAUDE.md populated with metadata
+- [ ] JSP template copied
+- [ ] OPP template copied
+- [ ] CostFormation downloaded (if exists)
+- [ ] Initial state queried via MCP
+- [ ] Adoption checkboxes checked based on current state
+- [ ] Initial commit made
+- [ ] Health check run for baseline score
+- [ ] Kickoff meeting conducted
+- [ ] Post-kickoff updates committed
